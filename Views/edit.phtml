@@ -1,0 +1,62 @@
+<?php require("Views/template/header.phtml") ?>
+    <div class="container-fluid">
+        <h1 class="mt-4 text-center">Edit Repository</h1>
+    </div>
+    <!-- Page content-->
+
+    <!--Albumn to contain cards-->
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--card form-->
+                    <div class="card mb-6 box-shadow">
+                        <div class="card-body">
+                            <h4 class="text-center">Update your Repository Details</h4>
+                            <br>
+                            <div class="d-flex justify-content-center">
+                                <form method="post" action="update.php" class="form">
+                                    <div class="form-group row pb-2">
+                                        <input type="hidden" name="full_name" value="<?= $data["full_name"] ?>">
+                                        <label for="name" class="h5 col-sm-5">Name:</label>
+
+
+                                        <div class="col-sm-5">
+                                            <input type="text" name="name" id="name" value="<?= $data["name"] ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row pb-2">
+
+                                        <label for="description" class="h5 col-sm-5">Description</label>
+
+                                        <div class="col-sm-5">
+                                            <textarea name="description" id="description"><?= htmlspecialchars($data["description"]) ?></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-group d-flex justify-content-end pb-2">
+                                        <button class="btn btn-outline-dark">Submit</button>
+                                        <!__ input type="submit" name="update" value="Submit" ">
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <form method="post">
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit" name="back" value="Cancel" class="btn btn-danger align-items-center" >
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div
+        </div>
+    </div>
+
+
+
+
+<?php require ('template/footer.phtml') ?>

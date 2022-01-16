@@ -1,0 +1,42 @@
+<?php require("Views/template/header.phtml") ?>
+<!-- Page content-->
+<div class="container-fluid">
+    <h1 class="mt-4 text-center">Details About Your Repository</h1>
+</div>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+            <div class="col-md-12">
+                <?php
+                $repository = $data;
+                require('repoBriefCard.phtml')
+                ?>
+
+                <div class="card mb-12 box-shadow">
+                    <div class="card-body text-center">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <form method="post" action="" class="form">
+                                <div class="btn">
+                                    <input type="hidden" name="name" value="<?=$repository["full_name"] ?>">
+                                    <input type="submit" name="back" value="Back to All Repositories" class="btn btn-outline-secondary" >
+                                    <input type="submit" name="edit" value="Edit Repository" class="btn btn-warning" >
+                                </div>
+                            </form>
+
+                            <form method="post" action="" class="form">
+                                <div class="btn">
+                                    <input type="hidden" name="full_name" value="<?=$repository["full_name"] ?>">
+                                    <button type="submit" name="delete" class="btn btn-danger" >Delete Repository</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</div>
+
+<?php require ('template/footer.phtml') ?>
+

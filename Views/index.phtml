@@ -1,11 +1,20 @@
 <?php require("Views/template/header.phtml") ?>
 <!-- Page content-->
 <div class="container-fluid">
-    <h1 class="mt-4 text-center">Insert Page Title Here</h1>
+    <h1 class="mt-4 text-center">Your Repositories</h1>
 </div>
 
-<?php require ('infoCard.phtml') ?>
+<div class="album py-5 bg-light">
+    <div class="container">
 
+            <div class="col-md-12">
+                <?php foreach ($data as $repository)
+                    require('repoBriefCard.phtml')
+                ?>
+            </div>
+
+    </div>
+</div>
 
 <?php require ('template/footer.phtml') ?>
 

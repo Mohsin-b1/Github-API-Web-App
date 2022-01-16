@@ -1,0 +1,31 @@
+
+<div class="row pb-3">
+                   <!--card to contain user info-->
+                   <div class="card mb-12 box-shadow">
+                        <div class="card-body text-center">
+                            <h5>Name: <b class="text-primary"><?=$repository["full_name"] ?></b></h5>
+                            <h5>Description: <b class="text-primary"><?=$repository["description"] ?></b></h5>
+                            <div class="d-flex justify-content-center align-items-center">
+                            <form method="post" action="" class="form">
+                                <?php
+                                    if ($view->pageTitle == 'show') {
+
+                                    }
+                                    else{
+                                        echo  '<div class="btn-group">';
+                                        echo '<input type="hidden" name="name" value=' . $repository["full_name"];
+
+                                        echo '>';
+                                        echo '<input type="submit" name="show" value="Show more details" class="btn btn-outline-secondary" >';
+                                        echo '</div>';
+                                    }
+                                ?>
+
+
+
+
+                            </form>
+                            </div>
+                        </div>
+                   </div>
+</div>
