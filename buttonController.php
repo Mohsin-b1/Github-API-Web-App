@@ -6,9 +6,9 @@ if(isset($_POST['show'])){
 elseif (isset($_POST['back'])){
     header('Location: index.php');
 }
-elseif (isset($_POST['edit'])){
+elseif (isset($_POST['commits'])){
     $name= $_POST["name"];
-    header("Location: edit.php?full_name=$name");
+    header("Location: commits.php?full_name=$name");
 }
 elseif (isset($_POST['delete'])){
     $name= $_POST["full_name"];

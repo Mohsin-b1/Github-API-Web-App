@@ -5,7 +5,8 @@ $view->pageTitle = 'Homepage';
 
 $ch = require "init_curl.php";
 
-curl_setopt($ch, CURLOPT_URL, "https://api.github.com/user/repos");
+curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repositories");
+
 
 $response = curl_exec($ch);
 

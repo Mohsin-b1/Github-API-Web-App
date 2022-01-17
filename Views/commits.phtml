@@ -1,19 +1,23 @@
 <?php require("Views/template/header.phtml") ?>
 <!-- Page content-->
 <div class="container-fluid">
-    <h1 class="mt-4 text-center">Details About Your Repository</h1>
+    <h1 class="mt-4 text-center">Commit History</h1>
 </div>
 
 <div class="album py-5 bg-light">
     <div class="container">
             <div class="col-md-12">
                 <?php
-                $repository = $data;
-                $owner = $repository['owner'];
-                //var_dump($owner);
-                require('repoFullCard.phtml')
+                foreach($commitData as $value):
+                    $commit = $value['commit'];
+                    $author = $commit['author'];
+                    //var_dump($value['commit']);
+                    //echo "<br><br>";
+                    //var_dump($commit['author']);
+                    //var_dump($author['name']);
+                    require('commitsCard.phtml');
+                endforeach;
                 ?>
-
 
                 <div class="card mb-12 box-shadow">
                     <div class="card-body text-center">
@@ -22,9 +26,9 @@
                                 <div class="btn">
                                     <input type="hidden" name="name" value="<?=$repository["full_name"] ?>">
                                     <input type="submit" name="back" value="Back to All Repositories" class="btn btn-outline-secondary" >
-                                    <input type="submit" name="commits" value="View Commit History" class="btn btn-info" >
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

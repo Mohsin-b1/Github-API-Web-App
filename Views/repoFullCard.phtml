@@ -5,6 +5,7 @@
                         <div class="card-body text-center">
                             <h5>Repo Name: <b class="text-primary"><?=$repository["name"] ?></b></h5>
                             <h5>Description: <b class="text-primary"><?=$repository["description"] ?></b></h5>
+                            <h5>Owner: <b class="text-primary"><a href="https://github.com/<?=$owner["login"] ?>"> <?=$owner["login"] ?></a></b></h5>
                             <div class="d-flex justify-content-center align-items-center">
                             <form method="post" action="" class="form">
                                 <?php
