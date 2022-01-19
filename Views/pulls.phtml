@@ -1,7 +1,7 @@
 <?php require("Views/template/header.phtml") ?>
 <!-- Page content-->
 <div class="container-fluid">
-    <h1 class="mt-4 text-center">Commit History</h1>
+    <h1 class="mt-4 text-center">Pulls</h1>
 </div>
 
 <div class="album py-5 bg-light">
@@ -9,14 +9,13 @@
             <div class="col-md-12">
                 <?php
                 $repository = $data;
-                foreach($commitData as $value):
-                    $commit = $value['commit'];
-                    $author = $commit['author'];
+                foreach($pullsData as $value):
+                    $user = $value['user'];
                     //var_dump($value['commit']);
                     //echo "<br><br>";
                     //var_dump($commit['author']);
                     //var_dump($author['name']);
-                    require('commitsCard.phtml');
+                    require('pullsCard.phtml');
                 endforeach;
                 ?>
 

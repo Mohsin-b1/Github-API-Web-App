@@ -15,18 +15,22 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 
-curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repos/$full_name/commits");
+curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repos/$full_name/issues");
 $response = curl_exec($ch);
 curl_close($ch);
-$commitData = json_decode($response, true);
-
+$issueData = json_decode($response, true);
+/*
+echo "https://api.github.com/repos/$full_name/issues";
+echo "<br><br><br>";
+var_dump($issueData);
+*/
 
 
 //var_dump($full_name);
 //var_dump($data);
 
 require_once("buttonController.php");
-require_once("Views/commits.phtml");
+require_once("Views/issues.phtml");
 
 
 ?>

@@ -1,0 +1,16 @@
+
+<div class="row pb-3">
+                   <!--card to contain user info-->
+                   <div class="card mb-12 box-shadow">
+                        <div class="card-body text-center">
+                            <h5>Issue Number: <b class="text-primary"><?=$value["number"] ?></b></h5>
+                            <h5>Description: <b class="text-primary"><?=$value["title"] ?></b></h5>
+                            <h5>Status: <b class="text-primary"><?=$value["state"] ?></b></h5>
+                            <br>
+                            <h5>Date Created: <b class="text-primary"><?=$value["created_at"] ?></b></h5>
+                            <h5>Last Update: <b class="text-primary"><?=$value["updated_at"] ?></b></h5>
+                            <br>
+                            <h5>Author: <b class="text-primary"><a href="https://github.com/<?=$user["login"] ?>"> <?=$user["login"] ?></a></b></h5>
+                        </div>
+                   </div>
+</div>
