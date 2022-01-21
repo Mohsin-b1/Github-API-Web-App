@@ -14,7 +14,13 @@ curl_close($ch);
 
 $data = json_decode($response, true);
 
+curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repos/$full_name/community/profile");
 
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+$metrics = json_decode($response, true);
 
 //var_dump($full_name);
 //var_dump($data);

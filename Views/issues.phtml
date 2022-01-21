@@ -7,31 +7,93 @@
 <div class="album py-5 bg-light">
     <div class="container">
             <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <form method="post" action="" class="form">
+                        <div class="row pb-2">
+                            <!--
+                             <label for="searchVal" class="h5 col-sm-5">Search by name:</label>
+                             -->
+                            <div class="">
+                                <h3 class="">Search Issues</h3>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center pb-2">
+                            <input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by author name.." title="Type in a name">
+                        </div>
+
+                    </form>
+                    <div class="row ps-5">
+                        <form method="POST" action="">
+                            <h4>Filters</h4>
+                            <input type="checkbox" id="number" name="number" value="number" onchange="this.form.submit()">
+                            <label for="number"> Issue No.</label><br>
+                            <input type="checkbox" id="title" name="title" value="title" onchange="this.form.submit()">
+                            <label for="title"> Title</label><br>
+                            <input type="checkbox" id="cdate" name="cdate" value="cdate" onchange="this.form.submit()">
+                            <label for="cdate"> Date Created</label><br>
+                            <input type="checkbox" id="udate" name="udate" value="udate" onchange="this.form.submit()">
+                            <label for="udate"> Date Updated</label><br>
+                            <input type="checkbox" id="author" name="author" value="author" onchange="this.form.submit()">
+                            <label for="author"> Author</label><br>
+                            <input type="checkbox" id="all" name="all" value="all" onchange="this.form.submit()">
+                            <label for="all"> Show All</label><br><br>
+
+                        </form>
+                    </div>
+                </div>
                 <?php
+                /*
                 $repository = $data;
                 foreach($issueData as $value):
                     $user = $value['user'];
-                    //var_dump($value['commit']);
-                    //echo "<br><br>";
-                    //var_dump($commit['author']);
-                    //var_dump($author['name']);
                     require('issuesCard.phtml');
                 endforeach;
+                */
                 ?>
 
-                <div class="card mb-12 box-shadow">
-                    <div class="card-body text-center">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <form method="post" action="" class="form">
-                                <div class="btn">
-                                    <input type="hidden" name="name" value="<?=$repository["full_name"] ?>">
-                                    <input type="submit" name="show" value="Back to Repository Info" class="btn btn-outline-secondary" >
-                                </div>
-                            </form>
+                <table class="table table-bordered table-striped align-middle pt-4" id="myTable">
+                    <thead class="table-dark align-middle" >
+                    <tr>
+                        <th style="">Issue No.</th>
+                        <th style="">Title</th>
+                        <th style="">State</th>
+                        <th style="">Date Created</th>
+                        <th style="">Date Updated</th>
+                        <th style="">User</th>
+                    </tr>
+                    </thead>
 
-                        </div>
-                    </div>
-                </div>
+                    <tbody>
+
+                    <?php
+                    /*
+                    $repository = $issueData;
+                    foreach($issueData as $value):
+                        //$commit = $value['commit'];
+                        //var_dump($value);
+                        $author = $value['user'];
+                        echo "
+                             <tr>
+                                <td>".$value['number']."</td>
+                                <td>".$value['title']."</td>
+                                <td>".$value['state']."</td>
+                                <td>".$value['created_at']."</td>
+                                <td>".$value['updated_at']."</td>
+                                <td>".$author['login']."</td>
+                             </tr>";
+                    endforeach;
+                    */
+                    require_once("issuesCard.phtml");
+                    ?>
+                    </tbody>
+
+
+                </table>
+
+                <?php
+                require('returnButton.phtml')
+                ?>
 
             </div>
     </div>
@@ -39,3 +101,23 @@
 
 <?php require ('template/footer.phtml') ?>
 
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

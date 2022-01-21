@@ -1,18 +1,101 @@
+<?php
 
-<div class="row pb-3">
-                   <!--card to contain user info-->
-                   <div class="card mb-12 box-shadow">
-                        <div class="card-body text-center">
-                            <h5>Title:</h5>
-                            <h5><b class="text-primary"><?=$value["title"] ?></b></h5>
-                            <h5>Description:</h5>
-                            <h5><b class="text-primary"><?=$value["body"] ?></b></h5>
-                            <h5>Status: <b class="text-primary"><?=$value["state"] ?></b></h5>
-                            <br>
-                            <h5>Date Created: <b class="text-primary"><?=str_replace("T"," - ",$value["created_at"])?></b></h5>
-                            <h5>Last Update: <b class="text-primary"><?=str_replace("T"," - ",$value["updated_at"])?></b></h5>
-                            <br>
-                            <h5>Author: <b class="text-primary"><a href="https://github.com/<?=$user["login"] ?>"> <?=$user["login"] ?></a></b></h5>
-                        </div>
-                   </div>
-</div>
+// all
+
+if (isset($_POST["all"])) {
+    foreach($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td>".$value['title']."</td>
+                                <td>".$value['body']."</td>
+                                <td>".$value['state']."</td>
+                                <td>".$value['created_at']."</td>
+                                <td>".$value['updated_at']."</td>
+                                <td>".$author['login']."</td>
+                             </tr>";
+    endforeach;
+}
+
+// msg
+elseif (isset($_POST["msg"]))
+{
+    foreach($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td></td>
+                                <td>".$value['body']."</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                             </tr>";
+    endforeach;
+}
+
+// author
+elseif (isset($_POST["author"]))
+{
+    foreach($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>".$author['login']."</td>
+                             </tr>";
+    endforeach;}
+
+// commit
+elseif (isset($_POST["title"]))
+{
+    foreach ($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td>" . $value['title'] . "</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                             </tr>";
+    endforeach;
+    }
+
+// date
+elseif (isset($_POST["cdate"]))
+{
+    foreach($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td></td>
+                                <td><td>
+                                <td></td>
+                                <td>".$value['created_at']."</td>
+                                <td></td>
+                                <td></td>
+                             </tr>";
+    endforeach;
+}
+
+elseif (isset($_POST["udate"]))
+{
+    foreach($pullsData as $value):
+        $author = $value['user'];
+        echo "
+                             <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>".$value['updated_at']."</td>
+                                <td></td>
+                             </tr>";
+    endforeach;
+}

@@ -6,6 +6,9 @@
                             <h5>Repo Name: <b class="text-primary"><?=$repository["name"] ?></b></h5>
                             <h5>Description: <b class="text-primary"><?=$repository["description"] ?></b></h5>
                             <h5>Owner: <b class="text-primary"><a href="https://github.com/<?=$owner["login"] ?>"> <?=$owner["login"] ?></a></b></h5>
+                            <h5>Health: <b class="text-primary"><progress class="" id="health" value=<?=$metrics["health_percentage"] ?> max="100"></progress></b></h5>
+                            <h5>Documentation: <b class="text-primary"><a href=<?=$metrics["documentation"] ?>> <?=$metrics["documentation"] ?></a></b></h5>
+                            <h5>Last Update: <b class="text-primary"><?=$metrics["updated_at"] ?></b></h5>
                             <div class="d-flex justify-content-center align-items-center">
                             <form method="post" action="" class="form">
                                 <?php

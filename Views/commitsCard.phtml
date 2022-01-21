@@ -1,11 +1,71 @@
+<?php
 
-<div class="row pb-3">
-                   <!--card to contain user info-->
-                   <div class="card mb-12 box-shadow">
-                        <div class="card-body text-center">
-                            <h5>Commit Date: <b class="text-primary"><?=$author["date"] ?></b></h5>
-                            <h5>Author Name: <b class="text-primary"><?=$author["name"] ?></b></h5>
-                            <h5>Description: <b class="text-primary"><?=$commit["message"] ?></b></h5>
-                        </div>
-                   </div>
-</div>
+// all
+
+if (isset($_POST["all"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach; }
+
+// msg
+elseif (isset($_POST["msg"]))
+{
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . "" . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+</tr>"; endforeach; }
+
+// author
+elseif (isset($_POST["author"]))
+{
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+</tr>"; endforeach; }
+
+// commit
+elseif (isset($_POST["commit"]))
+{
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach; }
+
+// date
+elseif (isset($_POST["date"]))
+{
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . "" . "</td>
+<td>" . "" . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . "" . "</td>
+</tr>"; endforeach; }

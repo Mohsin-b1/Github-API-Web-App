@@ -23,9 +23,10 @@ $commitData = json_decode($response, true);
 
 
 //var_dump($full_name);
-//var_dump($data);
+//var_dump($commitData);
 
 require_once("buttonController.php");
+
 require_once("Views/commits.phtml");
 
 
