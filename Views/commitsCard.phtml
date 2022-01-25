@@ -1,8 +1,6 @@
 <?php
-
 // all
-
-if (isset($_POST["all"])) {
+if (isset($_POST["msg"]) && isset($_POST["author"]) && isset($_POST["date"]) && isset($_POST["commit"])) {
     foreach ($commitData as $value):
         $commit = $value['commit'];
         $author = $commit['author'];
@@ -12,60 +10,173 @@ if (isset($_POST["all"])) {
 <td>" . $commit['message'] . "</td>
 <td>" . $author['date'] . "</td>
 <td>" . $value['sha'] . "</td>
-</tr>"; endforeach; }
-
-// msg
-elseif (isset($_POST["msg"]))
-{
-    foreach ($commitData as $value):
-        $commit = $value['commit'];
-        $author = $commit['author'];
-        // var_dump($commit['author']);
-        echo "<tr>
-<td>" . "" . "</td>
-<td>" . $commit['message'] . "</td>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
-</tr>"; endforeach; }
-
-// author
-elseif (isset($_POST["author"]))
-{
+</tr>"; endforeach;
+} // nothing set show all
+elseif (!isset($_POST["msg"]) && !isset($_POST["author"]) && !isset($_POST["date"]) && !isset($_POST["commit"])) {
     foreach ($commitData as $value):
         $commit = $value['commit'];
         $author = $commit['author'];
         // var_dump($commit['author']);
         echo "<tr>
 <td>" . $author['name'] . "</td>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
-</tr>"; endforeach; }
-
-// commit
-elseif (isset($_POST["commit"]))
-{
-    foreach ($commitData as $value):
-        $commit = $value['commit'];
-        $author = $commit['author'];
-        // var_dump($commit['author']);
-        echo "<tr>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
-<td>" . $value['sha'] . "</td>
-</tr>"; endforeach; }
-
-// date
-elseif (isset($_POST["date"]))
-{
-    foreach ($commitData as $value):
-        $commit = $value['commit'];
-        $author = $commit['author'];
-        // var_dump($commit['author']);
-        echo "<tr>
-<td>" . "" . "</td>
-<td>" . "" . "</td>
+<td>" . $commit['message'] . "</td>
 <td>" . $author['date'] . "</td>
-<td>" . "" . "</td>
-</tr>"; endforeach; }
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // msg + author
+elseif (isset($_POST["msg"]) && isset($_POST["author"]) && !isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // author
+elseif (!isset($_POST["msg"]) && isset($_POST["author"]) && !isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // commit
+elseif (!isset($_POST["msg"]) && !isset($_POST["author"]) && !isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // date
+elseif (!isset($_POST["msg"]) && !isset($_POST["author"]) && isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // msg + author + date
+elseif (isset($_POST["msg"]) && isset($_POST["author"]) && isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // msg + author + commit
+elseif (isset($_POST["msg"]) && isset($_POST["author"]) && !isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . " " . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // msg + date + commit
+elseif (isset($_POST["msg"]) && !isset($_POST["author"]) && isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // commit + date
+elseif (!isset($_POST["msg"]) && !isset($_POST["author"]) && isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // author + date
+elseif (!isset($_POST["msg"]) && isset($_POST["author"]) && isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . " " . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // author + commit
+elseif (!isset($_POST["msg"]) && isset($_POST["author"]) && !isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . " " . "</td>
+<td>" . " " . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // msg + date
+elseif (isset($_POST["msg"]) && !isset($_POST["author"]) && isset($_POST["date"]) && !isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . " " . "</td>
+</tr>"; endforeach;
+} // msg + commit
+elseif (isset($_POST["msg"]) && !isset($_POST["author"]) && !isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . " " . "</td>
+<td>" . $commit['message'] . "</td>
+<td>" . " " . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+} // author + date + commit
+elseif (!isset($_POST["msg"]) && isset($_POST["author"]) && isset($_POST["date"]) && isset($_POST["commit"])) {
+    foreach ($commitData as $value):
+        $commit = $value['commit'];
+        $author = $commit['author'];
+        // var_dump($commit['author']);
+        echo "<tr>
+<td>" . $author['name'] . "</td>
+<td>" . " " . "</td>
+<td>" . $author['date'] . "</td>
+<td>" . $value['sha'] . "</td>
+</tr>"; endforeach;
+}

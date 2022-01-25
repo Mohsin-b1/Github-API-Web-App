@@ -3,7 +3,7 @@
 $view = new stdClass();
 $view->pageTitle = 'Homepage';
 
-$ch = require "init_curl.php";
+$ch = require("init_curl.php");
 
 curl_setopt($ch, CURLOPT_URL, "https://api.github.com/repositories");
 

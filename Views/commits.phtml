@@ -30,6 +30,7 @@
             </form>
 
             <div class="row ps-5">
+                <!--
                 <form method="POST" action="">
                     <h4>Filters</h4>
                     <input type="checkbox" id="author" name="author" value="author" onchange="this.form.submit()">
@@ -43,6 +44,19 @@
                     <input type="checkbox" id="all" name="all" value="all" onchange="this.form.submit()">
                     <label for="all"> Show All</label><br><br>
 
+                </form>
+                -->
+                <form method="POST" action="">
+                    <h4>Filters</h4>
+                    <input type="checkbox" id="author" name="author" value="author">
+                    <label for="author"> Author name</label><br>
+                    <input type="checkbox" id="msg" name="msg" value="msg">
+                    <label for="msg"> Messages</label><br>
+                    <input type="checkbox" id="date" name="date" value="date">
+                    <label for="date"> Date</label><br>
+                    <input type="checkbox" id="commit" name="commit" value="commit">  <!-- onchange="this.form.submit()" -->
+                    <label for="commit"> Commit</label><br>
+                    <input type="submit" value="submit">
                 </form>
             </div>
 
